@@ -10,7 +10,7 @@ import { Event, EventDocument } from 'src/event/schemas/event.schema';
 @Injectable()
 export class CartService {
     constructor(@InjectModel(Cart.name) private readonly model: Model<CartDocument>, @InjectModel(Event.name) private readonly eventModel: Model<EventDocument>) { }
-    
+
     async createUserCart(userId: string, ticketDto: TicketDto, subTotalPrice: number, totalPrice: number): Promise<Cart> {
         const newCart = await this.model.create({
             userId,
@@ -69,11 +69,9 @@ export class CartService {
                 // check if numberOftickets is not more than set limit
                 if (ticket.numberOfTickets <= event.limit) {
                     await this.updateEvent(eventId, { "numberOfTickets": remainingticket, updatedAt: new Date() });
-
                     cart.tickets[ticketIndex] = ticket;
                     // calculate whatever is the cart
                     await this.getCartTotal(cart, ticketPrice)
-
                 } else {
                     throw new NotAcceptableException(`Cant buy more tickets than the set limit ${event.limit}`);
                 }
@@ -89,5 +87,4 @@ export class CartService {
             return newCart;
         }
     }
-
 }

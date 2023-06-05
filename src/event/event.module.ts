@@ -4,7 +4,6 @@ import { EventController } from './event.controller';
 import { EventService } from './event.service';
 import { Event, EventSchema } from './schemas/event.schema';
 
-
 @Module({
   providers: [EventService],
   controllers: [EventController],

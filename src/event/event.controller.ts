@@ -1,8 +1,7 @@
-import { Body, Controller, Delete, Get,Query, NotFoundException, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Query, NotFoundException, Param, Post, Put } from '@nestjs/common';
 import { CreateEventDto, UpdateEventDto } from './dto/event.dto';
 import { EventService } from './event.service';
 import { FilterEventsDto } from './dto/filter.dto';
-
 
 @Controller('events')
 export class EventController {
@@ -22,8 +21,8 @@ export class EventController {
 
     @Get(':id')
     async find(@Param('id') id: string) {
-        const event =  await this.service.findOne(id);
-        if(!event) throw new NotFoundException('event doesnt exist');
+        const event = await this.service.findOne(id);
+        if (!event) throw new NotFoundException('event doesnt exist');
         return event
     }
 
@@ -46,5 +45,3 @@ export class EventController {
         return event;
     }
 }
-
-
