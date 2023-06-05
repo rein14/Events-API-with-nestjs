@@ -9,5 +9,4 @@ export class FilterEventsDto {
 
     @IsString()
     category: string;
-
 }

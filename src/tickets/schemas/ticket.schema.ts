@@ -5,16 +5,13 @@ import { Event } from 'src/event/schemas/event.schema';
 export type TicketDocument = Ticket & Document;
 
 @Schema()
-export class Ticket{
-    @Prop({type: SchemaTypes.ObjectId, ref: Event.name})
+export class Ticket {
+    @Prop({ type: SchemaTypes.ObjectId, ref: Event.name })
     eventId: string;
 
     @Prop()
     numberOfTickets: number;
 
-    // @Prop()
-    // price: number;
-    
     @Prop()
     subTotalPrice: number;
 }

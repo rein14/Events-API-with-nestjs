@@ -6,7 +6,7 @@ import { EventModule } from './event/event.module';
 import { TicketModule } from './tickets/cart.module';
 
 @Module({
-  imports: [MongooseModule.forRoot('mongodb://127.0.0.1:27017/nest', {
+  imports: [MongooseModule.forRoot('mongoUrl', {
     useNewUrlParser: true, useUnifiedTopology: true
   }), EventModule, TicketModule],
   controllers: [AppController],

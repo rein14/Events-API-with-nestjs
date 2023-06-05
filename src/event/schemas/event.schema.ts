@@ -1,6 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import {  Document, Schema as MongooseSchema } from 'mongoose';
-
+import { Document, Schema as MongooseSchema } from 'mongoose';
 
 export type EventDocument = Event & Document;
 
@@ -14,16 +13,16 @@ export class Event {
 
     @Prop({ required: true })
     category: string;
-    
+
     @Prop({ required: true })
     numberOfTickets: number;
 
-    @Prop({required: true})
+    @Prop({ required: true })
     ticketLimit: boolean;
 
-    @Prop({required: true})
+    @Prop({ required: true })
     limit: number;
-    
+
     @Prop()
     ticketPrice: number;
 

@@ -10,8 +10,7 @@ import { Event, EventDocument } from 'src/event/schemas/event.schema';
 @Injectable()
 export class CartService {
     constructor(@InjectModel(Cart.name) private readonly model: Model<CartDocument>, @InjectModel(Event.name) private readonly eventModel: Model<EventDocument>) { }
-
-
+    
     async createUserCart(userId: string, ticketDto: TicketDto, subTotalPrice: number, totalPrice: number): Promise<Cart> {
         const newCart = await this.model.create({
             userId,
@@ -53,7 +52,6 @@ export class CartService {
 
     async addTicket(userId: string, ticketDto: TicketDto): Promise<Cart> {
         const { eventId, numberOfTickets } = ticketDto;
-
         const cart = await this.getCart(userId);
         const event = await this.getEvent(eventId);
         const ticketPrice = event.ticketPrice;

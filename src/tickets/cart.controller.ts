@@ -4,8 +4,8 @@ import { TicketDto } from './dto/ticket.dto';
 
 @Controller('cart')
 export class TicketsController {
-    constructor( private readonly service: CartService){}
-    
+    constructor(private readonly service: CartService) { }
+
     @Get()
     async getCart() {
         return this.service.getAllCart()
@@ -13,6 +13,7 @@ export class TicketsController {
 
     @Post()
     async addItemToCart(@Body() ticketDto: TicketDto) {
+        // default userId
         const userId = '6'
         const cart = await this.service.addTicket(userId, ticketDto);
         return cart
@@ -22,5 +23,4 @@ export class TicketsController {
 
 
 }
-//     async create ticketCart(tickk)
-// }
+
